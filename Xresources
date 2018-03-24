@@ -1,0 +1,18 @@
+! xterm*geometry: 140x43
+! xterm*faceName: default
+! xterm*cursorBlink: true
+! xterm*cursorUnderLine: true
+xterm*renderFont: true
+xterm*faceSize:11
+xterm*faceName:Ubuntu Mono
+xterm*scrollBar:false
+XTerm*selectToClipboard:true
+XTerm*VT100*saveLines: 100000
+XTerm*VT100*translations: #override \n\
+    <Btn1Up>:            select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+    Meta <Key>V: insert-selection(CLIPBOARD)
+Xft*antialias:          true
+Xft*autohint:           true
