@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+import os
+import re
+import subprocess
+import tempfile
+
+iconbar_h = 22 # 15px + buffer
+border = 1 # 1px
+inner_pad = 2 # 2px inner padding
+title_h = 18
+output = subprocess.check_output(['xwininfo', '-root'])
+matches = re.findall('(W|H)(idth|eight): ([0-9]+)', output)
+screen_size = {'W' : 0, 'H' : 0}
+
+for group in matches:
+  screen_size[group[0]] = int(group[2])
+
+screen_size['H'] -= iconbar_h + title_h + 2 * (inner_pad + border)
+screen_size_str = str(screen_size['W']) + 'x' + str(screen_size['H'])
+iconbar_length = str(screen_size['W'] - 200);
+twmrc_file = open(os.getenv('HOME')+'/.twmrc-dist', 'r')
+input_str = twmrc_file.read()
+twmrc_file.close()
+output_str = input_str.replace('MAX_WINDOWS_SIZE', screen_size_str).replace('ICON_MANAGER_LENGTH', iconbar_length);
+
+twmrc_file = open(os.getenv('HOME')+'/.twmrc', 'w')
+twmrc_file.write(output_str)
+twmrc_file.close()
