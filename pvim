@@ -1,0 +1,1 @@
+vim --noplugin --cmd 'set noswapfile' --cmd 'set nobackup' -n -u NONE -U NONE -i NONE $*
