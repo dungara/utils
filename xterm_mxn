@@ -22,7 +22,6 @@ height_c = (screen_size['H'] - iconbar_h - 2 * raws * (border + inner_pad)
 xwc = width_c/columns
 xhc = height_c/raws
 x_size = str(xwc) + 'x' + str(xhc)
-print x_size
 
 for i in range(0, columns):
   for j in range(0, raws):
